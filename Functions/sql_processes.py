@@ -13,3 +13,8 @@ def read_sql(query, conn):
          sql=query, con=conn
     )
     return df
+
+def write_sql(dataset, table, conn):
+     engine = sa.create_engine(conn)
+     connection = engine.connect()
+     dataset.to_sql(name = table, con = connection, if_exists = 'append', index = False)
