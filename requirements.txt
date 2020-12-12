@@ -1,0 +1,7 @@
+pandas
+numpy
+sqlalchemy
+xldr
+pyodbc
+pyarrow
+dask[complete]
