@@ -1,6 +1,6 @@
 pandas
 numpy
 sqlalchemy
-xldr
+xlrd
 pyodbc
 pyarrow
