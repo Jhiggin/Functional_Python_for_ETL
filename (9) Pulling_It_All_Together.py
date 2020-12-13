@@ -5,16 +5,18 @@ from Functions.transformations import *
 
 import pandas as pd
 import configparser
+import os
 from datetime import datetime
 
 # Load Config
+config_file = os.path.join(os.path.dirname(__file__), 'Config/config.ini')
 config = configparser.ConfigParser()
-config.read('Config/config.ini')
+config.read(config_file)
 
 # Initialize variables
-input_path = config['Production']['input_path']
-statecode_path = config['Production']['statecode_path']
-output_path = config['Production']['output_path']
+input_path = os.path.join(os.path.dirname(__file__), config['Production']['input_path'])
+statecode_path = os.path.join(os.path.dirname(__file__), config['Production']['statecode_path'])
+output_path = os.path.join(os.path.dirname(__file__), config['Production']['output_path'])
 conn_string = config['Production']['conn_string']
 
 # Read file from directory
@@ -64,4 +66,3 @@ write_to_csv(final, output_path + 'breweries_scrubbed.csv')
 
 # Write final to SQL Server
 write_sql(final, 'Breweries', conn_string)
-
