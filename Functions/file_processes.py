@@ -22,6 +22,8 @@ def write_to_excel(dataset, file_path):
 def write_to_parquet(dataset, file_path):
     dataset.to_parquet(path=file_path, index=False)
 
+def write_to_partitioned_parquet(dataset, file_path, partitionBy):
+    dataset.to_parquet(path=file_path, index=False, partition_cols = partitionBy)
 
 def write_to_feather(dataset, file_path):
     dataset.to_feather(path=file_path)
